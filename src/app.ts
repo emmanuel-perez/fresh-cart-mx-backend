@@ -1,3 +1,9 @@
+import { envs } from "./config/envs";
+import { app } from "./server";
 
-console.log('hello world');
+app.listen( envs.PORT, ()=> {
+    console.log(`server running in port ${ envs.PORT }`);
+});
+
+
 
