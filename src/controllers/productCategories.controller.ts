@@ -1,23 +1,29 @@
 import { Request, Response } from "express";
+import { createProductCategoryService, deleteProductCategoryService, getProductCategoryService, updateProductCategoryService } from "../services";
 
-export const getAllProductCategories = ( req: Request, res: Response ) => {
-    return res.json('get - product categories');
+export const getAllProductCategories = async ( req: Request, res: Response ) => {
+    //TODO: validations
+    getAllProductCategories( req, res );
 }
 
-export const getProductCategoryById = ( req: Request, res: Response ) => {
-    return res.json('get - product category by id');
+export const getProductCategoryById = async ( req: Request, res: Response ) => {
+    //TODO: validations
+    getProductCategoryService( req, res );
 }
 
-export const createProductCategory = ( req: Request, res: Response ) => {
-    return res.json('post - product category');
+export const createProductCategory = async ( req: Request, res: Response ) => {
+    //  TODO: validate model fields, validate categories to be unique
+    createProductCategoryService( req, res )
 }
 
-export const updateProductCategory = ( req: Request, res: Response ) => {
-    return res.json('put - product category');
+export const updateProductCategory = async ( req: Request, res: Response ) => {
+    //  TODOS: validations
+    updateProductCategoryService( req, res );
 }
 
-export const deleteProductCategory = ( req: Request, res: Response ) => {
-    return res.json('delete - product category');
+export const deleteProductCategory = async ( req: Request, res: Response ) => {
+    //  TODO: validations
+    deleteProductCategoryService( req, res );
 }
 
 
