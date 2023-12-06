@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { productsRoutes } from "./products.routes";
+import { productCategories, productsRoutes } from './';
 
 export const routes = Router();
 
 routes.use('/api/products', productsRoutes );
+routes.use('/api/product-categories', productCategories)
 
 
