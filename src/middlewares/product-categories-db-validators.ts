@@ -8,20 +8,16 @@ export const validateProductCategoryExists = async ( id: string ) => {
 }
 
 export const validateProductCategoryUniqueName = async ( name: string ) => {
-
     const lowerCaseName = name.toLowerCase();
-
-    const nameAlreadyOnDB = await ProductCategoryModel.find({ name: lowerCaseName });
+    const nameAlreadyOnDB = await ProductCategoryModel.findOne({ name: lowerCaseName });
     if ( nameAlreadyOnDB ) {
         throw new Error(`There is already a product with name: ${ lowerCaseName } in database`);
     }
 }
 
 export const validateProductCategoryStatus = async ( id: string ) => {
-    
     const productCategory = await ProductCategoryModel.findById( id );
-    
-    if ( !productCategory?.status ) {
+    if ( productCategory && !productCategory?.status ) {
         throw new Error ('This product category has been deactivated from database');
     }
 }

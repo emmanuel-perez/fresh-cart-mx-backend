@@ -1,28 +1,23 @@
 import { Request, Response } from "express";
-import { createProductCategoryService, deleteProductCategoryService, getProductCategoryService, updateProductCategoryService } from "../services";
+import { createProductCategoryService, deleteProductCategoryService, getAllProductCategoriesService, getProductCategoryService, updateProductCategoryService } from "../services";
 
-export const getAllProductCategories = async ( req: Request, res: Response ) => {
-    //TODO: validations
-    getAllProductCategories( req, res );
+export const getAllProductCategories = ( req: Request, res: Response ) => {
+    getAllProductCategoriesService( req, res );
 }
 
-export const getProductCategoryById = async ( req: Request, res: Response ) => {
-    //TODO: validations
+export const getProductCategoryById = ( req: Request, res: Response ) => {
     getProductCategoryService( req, res );
 }
 
-export const createProductCategory = async ( req: Request, res: Response ) => {
-    //  TODO: validate model fields, validate categories to be unique
+export const createProductCategory = ( req: Request, res: Response ) => {
     createProductCategoryService( req, res )
 }
 
-export const updateProductCategory = async ( req: Request, res: Response ) => {
-    //  TODOS: validations
+export const updateProductCategory = ( req: Request, res: Response ) => {
     updateProductCategoryService( req, res );
 }
 
-export const deleteProductCategory = async ( req: Request, res: Response ) => {
-    //  TODO: validations
+export const deleteProductCategory = ( req: Request, res: Response ) => {
     deleteProductCategoryService( req, res );
 }
 

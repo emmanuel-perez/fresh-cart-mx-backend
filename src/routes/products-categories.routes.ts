@@ -8,13 +8,11 @@ export const productCategories = Router();
 
 productCategories.get('/', getAllProductCategories );
 productCategories.get('/:id', [
-    //  TODO: validate rol
     check('id').custom( validateProductCategoryExists ),
     check('id').custom( validateProductCategoryStatus ),
     validateFields
 ],getProductCategoryById );
 productCategories.post('/', [
-    //  TODO: validate rol
     check('name').custom( validateProductCategoryUniqueName ),
     validateFields,
 ],createProductCategory );
@@ -23,11 +21,11 @@ productCategories.put('/:id', [
     check('id').custom( validateProductCategoryStatus ),
     validateFields,
 ],updateProductCategory );
-productCategories.put('/:id', [
+productCategories.delete('/:id', [
     check('id').custom( validateProductCategoryExists ),
     check('id').custom( validateProductCategoryStatus ),
     validateFields,
-],deleteProductCategory );
+], deleteProductCategory );
 
 
 
