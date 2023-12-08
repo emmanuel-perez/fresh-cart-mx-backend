@@ -1,2 +1,2 @@
 export * from './validate-fields';
-export * from './product-categories-db-validators';
+export * from './db-validators';
