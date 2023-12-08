@@ -13,3 +13,11 @@ export * from './Roles/deleteRole.service';
 export * from './Roles/getAllRoles.service';
 export * from './Roles/getRole.service';
 export * from './Roles/updateRole.service';
+
+//* PRODUCTS
+
+export * from './Products/createProduct.service';
+export * from './Products/deleteProduct.service';
+export * from './Products/getAllProducts.service';
+export * from './Products/getProductById.service';
+export * from './Products/updateProduct.service';
