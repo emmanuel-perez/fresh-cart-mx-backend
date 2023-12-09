@@ -9,8 +9,8 @@ export const createProductCategoryService = async ( req: Request, res: Response 
         const lowerCaseName: string = name.toLowerCase();
         body.name = lowerCaseName;
 
-        const newProduct = await ProductCategoryModel.create({ ...body });
-        return res.json( newProduct );
+        const newProductCategory = await ProductCategoryModel.create({ ...body });
+        return res.json( newProductCategory );
     } catch (error) {
         return res.status(500).json({
             error

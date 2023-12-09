@@ -31,6 +31,10 @@ const productSchema = new Schema({
         type: String,
         default: 'https://archive.org/download/placeholder-image/placeholder-image.jpg'
     },
+    status: {
+        type: Boolean,
+        default: true,
+    }
 })
 
 export const ProductModel = model<IProduct>('Product', productSchema );
