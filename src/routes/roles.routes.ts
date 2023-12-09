@@ -13,6 +13,7 @@ rolesRoutes.get('/:id', [
     validateFields,
 ],getRoleById );
 rolesRoutes.post('/', [
+    check('name', 'name field is required').not().isEmpty(),
     check('name').custom(( name: string ) => validateDocumentUniqueName( name, RoleModel ) ),
     validateFields,
 ], createRole );

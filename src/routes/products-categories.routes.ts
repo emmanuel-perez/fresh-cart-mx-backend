@@ -13,6 +13,7 @@ productCategoriesRoutes.get('/:id', [
     validateFields,
 ],getProductCategoryById );
 productCategoriesRoutes.post('/', [
+    check('name', 'name field is required').not().isEmpty(),
     check('name').custom(( name: string ) => validateDocumentUniqueName( name, ProductCategoryModel ) ),
     validateFields,
 ],createProductCategory );
