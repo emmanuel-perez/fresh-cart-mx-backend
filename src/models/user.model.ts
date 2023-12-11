@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { IUser } from '../types';
+import { IUser, RoleType } from '../types';
 
 const userSchema = new Schema({
     email: {
@@ -9,6 +9,11 @@ const userSchema = new Schema({
     password: {
         type: String,
         isRequired: [true, 'password field is required'],
+    },
+    role: {
+        type: String,
+        enum: Object.values( RoleType ),
+        default: RoleType.user_role,
     },
     status: {
         type: Boolean,

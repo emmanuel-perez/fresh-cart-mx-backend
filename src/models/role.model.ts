@@ -1,12 +1,13 @@
 
 import { Schema, model } from "mongoose";
-import { IRole, RoleName } from '../types';
+import { IRole, RoleType } from '../types';
 
 const roleSchema = new Schema({
-    name: {
+    type: {
         type: String,
-        required: [true, 'field name is required for role'],
-        enum: Object.values( RoleName ),
+        required: [true, 'field type is required for role'],
+        unique: true,
+        enum: Object.values( RoleType ),
     },
     description: {
         type: String,

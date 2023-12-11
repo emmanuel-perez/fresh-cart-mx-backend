@@ -1,7 +1,7 @@
-import { RoleName } from "../";
+import { RoleType } from "../";
 
 export interface IRole {
-    name: RoleName,
+    type: RoleType,
     status: boolean, 
     description?: string,
 }

@@ -4,10 +4,10 @@ import { RoleModel } from "../../models";
 export const createRoleService = async ( req: Request, res: Response ) => {
 
     try {
-        const { id, _id, name, ...body } = req.body;
+        const { id, _id, type, ...body } = req.body;
 
-        const lowerCaseName: string = name.toLowerCase();
-        body.name = lowerCaseName;
+        const lowerCaseRoleType: string = type.toLowerCase();
+        body.type = lowerCaseRoleType;
 
         const newRole = await RoleModel.create({ ...body });
         return res.json( newRole );
