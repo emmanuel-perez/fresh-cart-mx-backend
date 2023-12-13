@@ -21,3 +21,11 @@ export * from './Products/deleteProduct.service';
 export * from './Products/getAllProducts.service';
 export * from './Products/getProductById.service';
 export * from './Products/updateProduct.service';
+
+//* USERS
+
+export * from './Users/createUser.service';
+export * from './Users/deleteUser.service';
+export * from './Users/getAllUsers.service';
+export * from './Users/getUserById.service';
+export * from './Users/updateUser.service';

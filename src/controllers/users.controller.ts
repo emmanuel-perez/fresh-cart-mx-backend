@@ -1,23 +1,24 @@
 import { Request, Response } from "express";
+import { createUserService, deleteUserService, getAllUsersService, getUserByIdService, updateUserService } from "../services";
 
 export const getAllUsers = ( req: Request, res: Response ) => {
-    return res.json('users - getAll');
+    return getAllUsersService( req, res );
 }
 
 export const getUserById = ( req: Request, res: Response ) => {
-    return res.json('users - get User by ID');
+    return getUserByIdService( req, res );
 }
 
 export const createUser = ( req: Request, res: Response ) => {
-    return res.json('users - create user');
+    return createUserService( req, res );
 }
 
 export const updateUser = ( req: Request, res: Response ) => {
-    return res.json('users - update user');
+    return updateUserService( req, res );
 }
 
 export const deleteUser = ( req: Request, res: Response ) => {
-    return res.json('users - delete user');
+    return deleteUserService( req, res );
 }
 
 
