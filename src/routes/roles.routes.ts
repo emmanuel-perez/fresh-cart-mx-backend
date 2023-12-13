@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { validateDocumentIdExists, validateDocumentStatus, validateDocumentUniqueName, validateFields, validateRoleUnique } from "../middlewares";
+import { validateDocumentIdExists, validateDocumentStatus, validateFields, validateRoleUnique } from "../middlewares";
 import { RoleModel } from "../models";
 import { createRole, deleteRole, getAllRoles, getRoleById, updateRole } from "../controllers";
 
