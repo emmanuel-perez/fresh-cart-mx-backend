@@ -1,3 +1,4 @@
+
 //* PRODUCT CATEGORIES
 
 export * from './ProductCategories/createProductCategory.service';
@@ -29,3 +30,7 @@ export * from './Users/deleteUser.service';
 export * from './Users/getAllUsers.service';
 export * from './Users/getUserById.service';
 export * from './Users/updateUser.service';
+
+//* AUTH
+export * from './Auth/loginUser.service';
+export * from './Auth/signUpUser.service';
