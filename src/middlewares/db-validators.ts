@@ -36,6 +36,24 @@ export const validateEmailUnique = async ( email: string ) => {
 
 }
 
+export const validateEmailExists = async ( email: string ) => {
+
+    const emailExists = await UserModel.findOne({ email });
+
+    if ( !emailExists ) {
+        throw new Error(`there is no user with email ${ email } in database`);
+    }
+
+}
+
+export const validateUserStatusByEmail = async ( email: string ) => {
+    const user = await UserModel.findOne({ email });
+    if ( !user?.status  ) {
+        throw new Error(`user with email ${ email } has been marked as deleted from database`);
+    }
+}
+
+
 export const validateRoleUnique = async ( roleType: string ) => {
     const roleExists = await RoleModel.find({ type: roleType });
     if ( roleExists ) throw new Error(`Role ${ roleType } already exists in collection ${ RoleModel.collection.name }`)
