@@ -25,7 +25,12 @@ const userSchema = new Schema({
     phone: {
         type: Number,
     }
-})
+});
+
+userSchema.methods.toJSON = function () {
+    const { __v, ...data } = this.toObject();
+    return data;
+}
 
 export const UserModel = model<IUser>('User', userSchema );
 

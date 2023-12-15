@@ -17,7 +17,12 @@ const roleSchema = new Schema({
         default: true,
         required: [ true, 'status is required for role' ],
     }
-})
+});
+
+roleSchema.methods.toJSON = function () {
+    const { __v, ...data } = this.toObject();
+    return data;
+}
 
 export const RoleModel = model<IRole>('Role', roleSchema );
 

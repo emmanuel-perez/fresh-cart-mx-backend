@@ -15,6 +15,11 @@ const productCategorySchema = new Schema({
         type: Boolean,
         default: true,
     }
-})
+});
+
+productCategorySchema.methods.toJSON = function () {
+    const { __v, ...data } = this.toObject();
+    return data;
+}
 
 export const ProductCategoryModel = model<IProductCategory>('ProductCategory', productCategorySchema ); 

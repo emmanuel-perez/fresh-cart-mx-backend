@@ -35,6 +35,11 @@ const productSchema = new Schema({
         type: Boolean,
         default: true,
     }
-})
+});
+
+productSchema.methods.toJSON = function () {
+    const { __v, ...data } = this.toObject();
+    return data;
+}
 
 export const ProductModel = model<IProduct>('Product', productSchema );
