@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { createProduct, deleteProduct, getAllProducts, getProductById, updateProduct } from "../controllers";
 import { check } from "express-validator";
-import { validateDocumentIdExists, validateDocumentStatus } from "../middlewares";
+import { validateDocumentIdExists, validateDocumentStatus, validateJWT } from "../middlewares";
 import { ProductModel } from "../models";
 
 export const productsRoutes = Router();
@@ -26,6 +26,7 @@ productsRoutes.put('/:id', [
 ], updateProduct );
 
 productsRoutes.delete('/:id', [
+    validateJWT,
     check('id').custom((id: string) => validateDocumentIdExists( id, ProductModel ) ),
     check('id').custom(( id: string ) => validateDocumentStatus( id, ProductModel ) ),
 ], deleteProduct );
