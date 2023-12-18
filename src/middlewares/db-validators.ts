@@ -49,7 +49,8 @@ export const validateEmailExists = async ( email: string ) => {
 export const validateUserStatusByEmail = async ( email: string ) => {
     const user = await UserModel.findOne({ email });
     if ( !user?.status  ) {
-        throw new Error(`user with email ${ email } has been marked as deleted from database`);
+        const error = `user with email ${ email } has been marked as deleted from database`
+        throw new Error(error);
     }
 }
 

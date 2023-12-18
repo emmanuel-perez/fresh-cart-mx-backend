@@ -19,6 +19,10 @@ const userSchema = new Schema({
         type: Boolean,
         default: true,
     },
+    googleUser: {
+        type: Boolean,
+        default: false
+    },
     address: {
         type: String,
     },

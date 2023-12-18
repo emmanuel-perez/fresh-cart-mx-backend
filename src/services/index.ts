@@ -34,3 +34,4 @@ export * from './Users/updateUser.service';
 //* AUTH
 export * from './Auth/loginUser.service';
 export * from './Auth/signUpUser.service';
+export * from './Auth/googleLogin.service';
