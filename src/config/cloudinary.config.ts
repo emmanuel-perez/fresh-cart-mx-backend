@@ -9,10 +9,12 @@ cloudinary.config({
   api_secret: envs.CLOUDINARY_API_SECRET 
 });
 
-export const cloudinaryStorage = new CloudinaryStorage({
-    cloudinary,
-    params: {
-        folder: 'FreshCartMX',
-        allowedFormats: ['jpeg', 'png', 'jpg'],
-    } as CloudinaryStorageParams
-});
+export const createCloudinaryStorage = (folderPath: string): CloudinaryStorage => {
+  return new CloudinaryStorage({
+      cloudinary,
+      params: {
+          folder: `FreshCartMX/${folderPath}`,
+          allowedFormats: ['jpeg', 'png', 'jpg'],
+      } as CloudinaryStorageParams
+  });
+};

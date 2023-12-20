@@ -1,8 +1,9 @@
 import { Router } from "express";
 import multer from 'multer';
-import { cloudinaryStorage as storage } from "../config";
+import { createCloudinaryStorage } from "../config";
 import { uploadProductImage } from "../controllers";
 
+const storage = createCloudinaryStorage('products');
 const upload = multer({ storage })
 
 export const uploadsRoutes = Router();
