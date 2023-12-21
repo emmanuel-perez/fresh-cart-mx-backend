@@ -31,6 +31,9 @@ const productSchema = new Schema({
         type: String,
         default: 'https://archive.org/download/placeholder-image/placeholder-image.jpg'
     },
+    cloudinaryId: {
+        type: String,
+    },
     status: {
         type: Boolean,
         default: true,
