@@ -8,6 +8,6 @@ const upload = multer({ storage })
 
 export const uploadsRoutes = Router();
 
-uploadsRoutes.post('/products', upload.single('image'), uploadProductImage );
+uploadsRoutes.post('/products/:id', upload.single('image'), uploadProductImage );
 
 
