@@ -38,3 +38,4 @@ export * from './Auth/googleLogin.service';
 
 //* UPLOADS
 export * from './Uploads/upload-product-image.service';
+export * from './Uploads/update-product-image.service';

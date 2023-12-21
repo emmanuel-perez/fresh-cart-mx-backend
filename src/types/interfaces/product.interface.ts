@@ -7,4 +7,5 @@ export interface IProduct {
     price: number,
     available: boolean,
     imageUrl: string,
+    cloudinaryId: string,
 }
