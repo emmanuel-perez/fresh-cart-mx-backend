@@ -1,5 +1,7 @@
 import { Model } from "mongoose";
-import { RoleModel, UserModel } from "../models";
+import { ProductModel, RoleModel, UserModel } from "../models";
+import { CustomValidator } from "express-validator";
+import { NextFunction, Request, Response } from "express";
 
 export const validateDocumentIdExists = async <T>( id: string, model: Model<T> ) => {
     const documentExists = await model.findById( id );
@@ -54,8 +56,29 @@ export const validateUserStatusByEmail = async ( email: string ) => {
     }
 }
 
-
 export const validateRoleUnique = async ( roleType: string ) => {
     const roleExists = await RoleModel.find({ type: roleType });
     if ( roleExists ) throw new Error(`Role ${ roleType } already exists in collection ${ RoleModel.collection.name }`)
+}
+
+export const validateImageIsSent: CustomValidator = async ( value, { req }) => {
+    const fileExists = await req.file
+
+    if (!fileExists ) {
+      throw new Error('Image is required');
+    }
+};
+
+export const validateProductImageNotExist = async ( req: Request, res: Response, next: NextFunction ) => {
+    const { id } = req.params;
+    const product = await ProductModel.findById( id );
+    const productImageExists = product?.cloudinaryId;
+
+    if ( productImageExists ) {
+        return res.status(400).json({
+            msg: 'This product has already an image, use PUT request instead'
+        })
+    }
+
+    next()
 }
