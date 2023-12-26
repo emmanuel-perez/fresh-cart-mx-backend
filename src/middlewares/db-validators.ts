@@ -58,7 +58,7 @@ export const validateUserStatusByEmail = async ( email: string ) => {
 
 export const validateRoleUnique = async ( roleType: string ) => {
     const roleExists = await RoleModel.find({ type: roleType });
-    if ( roleExists ) throw new Error(`Role ${ roleType } already exists in collection ${ RoleModel.collection.name }`)
+    if ( roleExists.length >> 0 ) throw new Error(`Role ${ roleType } already exists in collection ${ RoleModel.collection.name }`)
 }
 
 export const validateImageIsSent: CustomValidator = async ( value, { req }) => {
