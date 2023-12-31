@@ -29,7 +29,7 @@ const productSchema = new Schema({
     },
     imageUrl: {
         type: String,
-        default: 'https://archive.org/download/placeholder-image/placeholder-image.jpg'
+        default: 'https://loomcrafts.com/wp-content/uploads/2018/09/placeholder-vertical.jpg'
     },
     cloudinaryId: {
         type: String,
