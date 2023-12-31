@@ -18,7 +18,8 @@ const productCategorySchema = new Schema({
 });
 
 productCategorySchema.methods.toJSON = function () {
-    const { __v, ...data } = this.toObject();
+    const { __v, _id, ...data } = this.toObject();
+    data.uid = _id;
     return data;
 }
 
