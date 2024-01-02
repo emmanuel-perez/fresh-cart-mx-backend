@@ -13,7 +13,7 @@ const productSchema = new Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, 'category field is required'],
-        ref: 'Category',
+        ref: 'ProductCategory',
     },
     brand: {
         type: String,
