@@ -10,6 +10,7 @@ export interface IProduct {
 }
 
 export interface IProductGetRequest {
+    _id: string, 
     name: string,
     description: string,
     category: IProductCategoryGetRequest,

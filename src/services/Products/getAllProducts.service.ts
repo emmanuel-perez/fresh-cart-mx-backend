@@ -21,8 +21,10 @@ export const getAllProductsService = async (req: Request, res: Response) => {
         
         //* Modifies the response to use 'uid' instead of '_id' for the 'category' field;
         const modifiedProducts: IProductGetRequest[] = products.map(( product: any ) => {
+            const { _id, ...data } = product; 
             return {
-                ...product,
+                uid: _id,
+                ...data,
                 category: product.category ? { name: product.category.name, uid: product.category._id } : null,
             };
         });
