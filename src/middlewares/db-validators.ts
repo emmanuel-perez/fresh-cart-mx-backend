@@ -1,5 +1,5 @@
 import { Model } from "mongoose";
-import { ProductModel, RoleModel, UserModel } from "../models";
+import { ProductCategoryModel, ProductModel, RoleModel, UserModel } from "../models";
 import { CustomValidator } from "express-validator";
 import { NextFunction, Request, Response } from "express";
 
@@ -68,6 +68,21 @@ export const validateImageIsSent: CustomValidator = async ( value, { req }) => {
       throw new Error('Image is required');
     }
 };
+
+export const validateCategoryFromProduct = async ( categoryId: string ) => {
+    const productCategory = await ProductCategoryModel.findById( categoryId );
+    
+    //* Validate if category exists
+    if ( categoryId && !productCategory ) {
+        throw new Error(`Invalid product category in get products: There is no category with id ${ categoryId }`);
+    } 
+
+    //* Validate category has status true
+    if ( categoryId && !productCategory?.status) {
+        throw new Error('Invalid product category in get products: Category is marked as deactivated from database: status false');
+    } 
+
+}
 
 export const validateProductImageNotExist = async ( req: Request, res: Response, next: NextFunction ) => {
     const { id } = req.params;

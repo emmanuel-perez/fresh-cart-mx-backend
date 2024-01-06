@@ -1,18 +1,15 @@
-import { Router } from "express";
-import { createProduct, deleteProduct, getAllProducts, getProductById, getProductsByCategory, updateProduct } from "../controllers";
+import { Request, Response, Router } from "express";
+import { createProduct, deleteProduct, getProducts, getProductById, updateProduct } from "../controllers";
 import { check } from "express-validator";
-import { validateDocumentIdExists, validateDocumentStatus, validateFields, validateJWT } from "../middlewares";
+import { validateCategoryFromProduct, validateDocumentIdExists, validateDocumentStatus, validateFields, validateJWT } from "../middlewares";
 import { ProductCategoryModel, ProductModel } from "../models";
 
 export const productsRoutes = Router();
 
-productsRoutes.get('/', getAllProducts );
-
-productsRoutes.get('/category/:categoryId', [
-    check('categoryId').custom(( categoryId: string ) => validateDocumentIdExists( categoryId, ProductCategoryModel ) ),
-    check('categoryId').custom(( categoryId: string ) => validateDocumentStatus( categoryId, ProductCategoryModel ) ),
-    validateFields,
-], getProductsByCategory );
+productsRoutes.get('/', [
+    check('categoryId').custom( validateCategoryFromProduct ),
+    validateFields
+], getProducts );
 
 productsRoutes.get('/:id', [
     check('id').custom(( id: string ) => validateDocumentIdExists( id, ProductModel ) ),

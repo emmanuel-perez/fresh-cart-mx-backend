@@ -19,8 +19,7 @@ export * from './Roles/updateRole.service';
 
 export * from './Products/createProduct.service';
 export * from './Products/deleteProduct.service';
-export * from './Products/getProductsByCategory.service';
-export * from './Products/getAllProducts.service';
+export * from './Products/getProducts.service';
 export * from './Products/getProductById.service';
 export * from './Products/updateProduct.service';
 
