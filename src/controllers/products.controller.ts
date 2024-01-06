@@ -1,8 +1,12 @@
 import { Request, Response } from "express";
-import { createProductService, deleteProductService, getAllProductsService, getProductByIdService, updateProductService } from "../services";
+import { createProductService, deleteProductService, getAllProductsService, getProductByIdService, getProductsByCategoryService, updateProductService } from "../services";
 
 export const getAllProducts = ( req: Request, res: Response ) => {
     getAllProductsService( req, res );
+}
+
+export const getProductsByCategory = ( req: Request, res: Response ) => {
+    getProductsByCategoryService( req, res );
 }
 
 export const getProductById = ( req: Request, res: Response ) => {
