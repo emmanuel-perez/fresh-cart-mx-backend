@@ -3,8 +3,14 @@ import { ProductModel } from "../../models";
 import { IProductGetRequest } from "../../types";
 
 export const getProductsService = async (req: Request, res: Response) => {
-    const { limit = Number.POSITIVE_INFINITY, start = 0, categoryId } = req.query;
-    const productsQuery = categoryId? { status: true, category: categoryId }: { status: true }; 
+    const { limit = Number.POSITIVE_INFINITY, start = 0, categoryId, textQuery='' } = req.query;
+
+    const productsQuery = {
+        $and: [
+          textQuery ? { $text: { $search: String( textQuery ) } }: {},
+          categoryId ? { status: true, category: categoryId } : { status: true }
+        ]
+    };
     
     const totalProductsPromise = ProductModel.countDocuments( productsQuery );
     const productsPromise = ProductModel.find( productsQuery )
