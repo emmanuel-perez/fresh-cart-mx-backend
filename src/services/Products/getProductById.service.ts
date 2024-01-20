@@ -7,33 +7,27 @@ export const getProductByIdService = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
 
-        // Fetch only the necessary fields from the database
-        const product: IProductGetRequest | null = await ProductModel.findById(id, { _id: 1, category: 1, /* Add other fields as needed */ })
+        const product: IProductGetRequest | null = await ProductModel.findById(id)
             .populate({
                 path: 'category',
-                select: 'name uid',
+                select: 'name',
             })
             .lean();
 
-        // Handle the case where the product is not found
         if (!product) {
             return res.status(404).json({ error: "Product not found" });
         }
-
-        // Use object destructuring for concise code
+        
         const { _id, category, ...data } = product;
 
-        // Build the modified product object
+        //* modified product builds the product object with uid instead of id
         const modifiedProduct = {
             uid: _id,
             ...data,
-            category: {
-                uid: category?._id,
-                name: category?.name,
-            }
+            category: product.category ? { name: product.category.name, uid: product.category._id } : null,
         };
 
-        return res.json(modifiedProduct);
+        return res.json({ product: modifiedProduct });
     } catch (error) {
         console.error("Error fetching product:", error);
         return res.status(500).json({ error: "Internal Server Error" });
