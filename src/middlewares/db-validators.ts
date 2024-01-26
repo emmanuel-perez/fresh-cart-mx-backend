@@ -33,7 +33,7 @@ export const validateEmailUnique = async ( email: string ) => {
     const emailExists = await UserModel.findOne({ email });
 
     if ( emailExists ) {
-        throw new Error(`there is already a user in database with the email: ${ email }`)
+        throw new Error(`user already exists with email: ${ email }`)
     }
 
 }

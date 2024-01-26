@@ -13,7 +13,9 @@ export const loginUserService = async ( req: Request, res: Response ) => {
     const isPasswordValid = compareSync( password, user?.password! );
 
     if ( !isPasswordValid ) {
-        return res.status(400).json('Email or password incorrect');
+        return res.status(400).json({
+            errors: 'Email or password incorrect'
+        });
     }
     
     //* Get JWT
