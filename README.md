@@ -57,5 +57,7 @@ Start the development server using the command:
 
 ##  API Endpoints 
 
-<!-- Insert Postman documentation -->
+Postman Documentation
+
+https://documenter.getpostman.com/view/17549938/2s9Yyv9epC
 
