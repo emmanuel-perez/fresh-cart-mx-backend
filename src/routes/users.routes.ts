@@ -6,7 +6,10 @@ import { UserModel } from "../models";
 
 export const usersRoutes = Router();
 
-usersRoutes.get('/', getAllUsers );
+usersRoutes.get('/', [
+    validateJWT,
+    validateFields,
+],getAllUsers );
 usersRoutes.get('/:id', [
     validateJWT,
     check('id').custom( (id: string) => validateDocumentIdExists( id, UserModel ) ),
