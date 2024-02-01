@@ -18,6 +18,7 @@ productsRoutes.get('/:id', [
 ], getProductById );
 
 productsRoutes.post('/', [
+    validateJWT,
     check('name', 'name field is required').not().isEmpty(),
     check('description', 'description field is required').not().isEmpty(),
     check('category', 'category field is required').not().isEmpty(),
@@ -26,6 +27,7 @@ productsRoutes.post('/', [
     validateFields
 ],createProduct );
 productsRoutes.put('/:id', [
+    validateJWT,
     check('id').custom(( id: string ) => validateDocumentIdExists( id, ProductModel ) ),
     check('id').custom(( id: string ) => validateDocumentStatus( id, ProductModel ) ),
     validateFields

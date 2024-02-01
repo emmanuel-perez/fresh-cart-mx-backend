@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { createUser, deleteUser, getAllUsers, getUserById, updateUser } from "../controllers";
 import { check } from "express-validator";
-import { validateDocumentIdExists, validateDocumentStatus, validateEmailUnique, validateFields } from "../middlewares";
+import { validateDocumentIdExists, validateDocumentStatus, validateEmailUnique, validateFields, validateJWT } from "../middlewares";
 import { UserModel } from "../models";
 
 export const usersRoutes = Router();
@@ -12,6 +12,7 @@ usersRoutes.get('/:id', [
     check('id').custom( (id: string) => validateDocumentStatus( id, UserModel ) ),
 ], getUserById );
 usersRoutes.post('/', [
+    validateJWT,
     check('email').not().isEmpty(),
     check('email').custom( validateEmailUnique ),
     check('email').isEmail(),
@@ -20,10 +21,12 @@ usersRoutes.post('/', [
     validateFields
 ], createUser );
 usersRoutes.put('/:id', [
+    validateJWT,
     check('id').custom( (id: string) => validateDocumentIdExists( id, UserModel ) ),
     check('id').custom( (id: string) => validateDocumentStatus( id, UserModel ) ),
 ], updateUser );
 usersRoutes.delete('/:id', [
+    validateJWT,
     check('id').custom( (id: string) => validateDocumentIdExists( id, UserModel ) ),
     check('id').custom( (id: string) => validateDocumentStatus( id, UserModel ) ),
 ],deleteUser );
