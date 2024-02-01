@@ -10,6 +10,7 @@ usersRoutes.get('/', getAllUsers );
 usersRoutes.get('/:id', [
     check('id').custom( (id: string) => validateDocumentIdExists( id, UserModel ) ),
     check('id').custom( (id: string) => validateDocumentStatus( id, UserModel ) ),
+    validateFields
 ], getUserById );
 usersRoutes.post('/', [
     check('email').not().isEmpty(),
@@ -23,10 +24,12 @@ usersRoutes.put('/:id', [
     validateJWT,
     check('id').custom( (id: string) => validateDocumentIdExists( id, UserModel ) ),
     check('id').custom( (id: string) => validateDocumentStatus( id, UserModel ) ),
+    validateFields
 ], updateUser );
 usersRoutes.delete('/:id', [
     validateJWT,
     check('id').custom( (id: string) => validateDocumentIdExists( id, UserModel ) ),
     check('id').custom( (id: string) => validateDocumentStatus( id, UserModel ) ),
+    validateFields
 ],deleteUser );
 
