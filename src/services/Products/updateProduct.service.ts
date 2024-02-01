@@ -11,5 +11,8 @@ export const updateProductService = async ( req: Request, res: Response ) => {
 
     const updatedProduct = await ProductModel.findByIdAndUpdate( id, body, { new: true } );
 
-    return res.json( updatedProduct );
+    return res.json({
+        msg: 'product updated successfully', 
+        product: updatedProduct 
+    });
 }

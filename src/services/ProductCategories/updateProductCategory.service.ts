@@ -12,7 +12,10 @@ export const updateProductCategoryService = async ( req: Request, res: Response 
 
     const updatedProductCategory = await ProductCategoryModel.findByIdAndUpdate( id, body, { new: true } );
 
-    return res.json( updatedProductCategory );
+    return res.json({ 
+        msg: 'product category updated successfully',
+        product_category: updatedProductCategory 
+    });
 
 }
 

@@ -11,5 +11,8 @@ export const updateUserService = async ( req: Request, res: Response ) => {
 
     const updatedUser = await UserModel.findByIdAndUpdate( id, body, { new: true } );
 
-    return res.json( updatedUser );
+    return res.json({
+        msg: 'usser updated successfully', 
+        user: updatedUser 
+    });
 }

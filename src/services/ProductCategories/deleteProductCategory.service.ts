@@ -5,7 +5,7 @@ export const deleteProductCategoryService = async ( req: Request, res: Response 
     const { id } = req.params;
     const deletedProductCategory = await ProductCategoryModel.findByIdAndUpdate( id, { status: false }, { new: true } );
     return res.json({
-        msg: 'product deleted succesfully',
+        msg: 'product category deleted succesfully',
         deleted_product: deletedProductCategory
     });
 }

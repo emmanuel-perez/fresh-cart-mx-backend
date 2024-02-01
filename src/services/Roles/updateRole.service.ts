@@ -12,7 +12,10 @@ export const updateRoleService = async ( req: Request, res: Response ) => {
 
     const updatedRole = await RoleModel.findByIdAndUpdate( id, body, { new: true } );
 
-    return res.json( updatedRole );
+    return res.json({
+        msg: 'role updated successfully', 
+        role: updatedRole 
+    });
 
 }
 

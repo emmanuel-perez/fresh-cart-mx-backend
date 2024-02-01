@@ -6,6 +6,6 @@ export const deleteUserService = async ( req: Request, res: Response ) => {
     const deletedUser = await UserModel.findByIdAndUpdate( id, { status: false }, { new: true } );
     return res.json({ 
         message: `The user with id ${ deletedUser?.id } has been eliminated`,
-        product: deletedUser 
+        user: deletedUser 
     });
 }
