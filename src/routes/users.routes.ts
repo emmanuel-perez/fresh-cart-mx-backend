@@ -12,7 +12,6 @@ usersRoutes.get('/:id', [
     check('id').custom( (id: string) => validateDocumentStatus( id, UserModel ) ),
 ], getUserById );
 usersRoutes.post('/', [
-    validateJWT,
     check('email').not().isEmpty(),
     check('email').custom( validateEmailUnique ),
     check('email').isEmail(),
