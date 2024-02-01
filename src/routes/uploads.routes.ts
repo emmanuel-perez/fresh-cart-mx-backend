@@ -27,6 +27,11 @@ uploadsRoutes.put('/products/:id', [
     check('image').custom( validateImageIsSent ),
     validateFields
 ], updateProductImage );
-uploadsRoutes.delete('/products/:id', deleteProductImage );
+
+uploadsRoutes.delete('/products/:id', [
+    validateJWT,
+    check('id').custom(( id: string ) => validateDocumentIdExists( id, ProductModel )),
+    validateFields
+],deleteProductImage );
 
 
